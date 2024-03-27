@@ -1,0 +1,111 @@
+[
+    {
+        "info": "Bottomfish fishing operations, typically using weighted lines and baited hooks, do not have adverse impacts to the habitat.",
+        "region": "Pacific Islands",
+        "scientificName": "Pristipomoides filamentosus",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/Pink_snapper_NB_W_0.png",
+            "alt": "Pink snapper",
+            "title": "Pink snapper"
+        },
+        "name": "Crimson Jobfish"
+    },
+    {
+        "info": "Area closures and gear restrictions protect habitats that are affected by some kinds of trawl gear.",
+        "region": "Greater Atlantic",
+        "scientificName": "Urophycis tenuis",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/Hake_White_NB_W_0.png",
+            "alt": "Illustration of white hake. Credit: Jack Hornady.",
+            "title": ""
+        },
+        "name": "White Hake"
+    },
+    {
+        "info": "Area closures and gear restrictions protect habitat that are affected by some types of trawl gear.",
+        "region": "Greater Atlantic",
+        "scientificName": "Scomber colias",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/Atlantic-chub-mackerel-FNL_NB_W.png",
+            "alt": "Illustration of Atlantic chub mackerel",
+            "title": "Atlantic chub mackerel"
+        },
+        "name": "Atlantic Chub Mackerel"
+    },
+    {
+        "info": "Fishing gears used to harvest shortfin squid have minimal impacts on habitat.",
+        "region": "Greater Atlantic",
+        "scientificName": "Illex illecebrosus",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/Squid_Illex_NB_W.png",
+            "alt": "shortfin squid",
+            "title": "Shortfin Squid"
+        },
+        "name": "Shortfin Squid"
+    },
+    {
+        "info": "Fishing gears used to harvest American lobster have minimal impacts on habitat.",
+        "region": "Greater Atlantic",
+        "scientificName": "Homarus americanus",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/Lobster_American_NB_Web.png",
+            "alt": "American Lobster",
+            "title": "American Lobster"
+        },
+        "name": "American Lobster"
+    },
+    {
+        "info": "Most fishing gear used to harvest yellowtail rockfish rarely contacts the ocean floor and has minimal impacts on habitat. Area closures and gear restrictions protect sensitive rocky, cold-water coral and sponge habitats from bottom trawl gear.",
+        "region": "West Coast, Alaska",
+        "scientificName": "Sebastes flavidus",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/Rockfish_Yellowtail_NB_W.png",
+            "alt": "Yellowtail rockfish",
+            "title": "Yellowtail rockfish"
+        },
+        "name": "Yellowtail Rockfish"
+    },
+    {
+        "info": "Area closures and gear restrictions protect sensitive rocky, cold-water coral and sponge habitats from bottom trawl gear.",
+        "region": "West Coast, Alaska",
+        "scientificName": "Sebastes paucispinis",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/Bocaccio_NB_W.png",
+            "alt": "Illustration of a Bocaccio rockfish.",
+            "title": "Bocaccio rockfish."
+        },
+        "name": "Bocaccio"
+    },
+    {
+        "info": null,
+        "region": "West Coast, Greater Atlantic, Alaska",
+        "scientificName": "Saccharina latissima",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/Kelp_Sugar_NB_W.png",
+            "alt": "",
+            "title": ""
+        },
+        "name": "Sugar Kelp"
+    },
+    {
+        "info": null,
+        "region": "West Coast",
+        "scientificName": "Anoplopoma fimbria",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/sablefish.png",
+            "alt": "",
+            "title": ""
+        },
+        "name": "Sablefish"
+    },
+    {
+        "region": "Greater Atlantic",
+        "scientificName": "Hippoglossus hippoglossus",
+        "illustrationPhoto": {
+            "src": "https://origin-east-01-drupal-fishwatch.woc.noaa.gov/sites/default/files/atlantic-halibut-illustration.png",
+            "alt": "Illustration of Atlantic Halibut.",
+            "title": "Illustration of Atlantic Halibut."
+        },
+        "name": "Atlantic Halibut"
+    }
+]
