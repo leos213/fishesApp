@@ -1,3 +1,5 @@
+// FishCard.js
+import React from "react";
 import styled from "styled-components";
 
 const GridContainer = styled.div`
@@ -10,16 +12,21 @@ const ImgStyle = styled.img`
   height: 100px;
 `;
 
-function FishCard({ name, region, scientificName, illustrationPhoto, info }) {
+const FishCard = ({
+  name,
+  region,
+  scientificName,
+  illustrationPhoto,
+  info,
+}) => {
   return (
     <GridContainer>
-      <div className="fish-card">
+      <div>
         <ImgStyle
           src={illustrationPhoto.src}
           alt={illustrationPhoto.alt}
           title={illustrationPhoto.title}
         />
-
         <h2>{name}</h2>
         <p>Region: {region}</p>
         <p>Scientific Name: {scientificName}</p>
@@ -27,6 +34,6 @@ function FishCard({ name, region, scientificName, illustrationPhoto, info }) {
       </div>
     </GridContainer>
   );
-}
+};
 
 export default FishCard;

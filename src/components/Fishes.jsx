@@ -1,3 +1,5 @@
+// Fishes.js
+import React from "react";
 import FishCard from "./FishCard";
 import { initialFishes } from "../data/fishes";
 import styled from "styled-components";
@@ -7,7 +9,7 @@ const FishesCont = styled.div`
   flex-direction: row;
 `;
 
-function Fishes() {
+const Fishes = () => {
   return (
     <FishesCont>
       {initialFishes.map((fish, i) => (
@@ -15,6 +17,6 @@ function Fishes() {
       ))}
     </FishesCont>
   );
-}
+};
 
 export default Fishes;

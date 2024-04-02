@@ -12,8 +12,9 @@ const Button = styled.button`
 `;
 
 const FormItem = styled.form`
-  display: flex;
+  display: ${(props) => (props.visible ? "flex" : "none")};
   flex-direction: column;
+  align-items: end;
   width: 400px;
   margin: 50px auto;
 `;
@@ -26,127 +27,105 @@ const LabelItem = styled.label`
   margin-left: 30px;
 `;
 
-const CreateFishForm = ({ onCarSubmit }) => {
-  const [fishFrom, setFishFrom] = useState({
-    id: Math.random(),
-    color: "",
-    year: 0,
-    make: "",
-    engine: 0,
-    price: 0,
-    img: "",
+const CreateFishForm = ({ onFishSubmit }) => {
+  const [fishData, setFishData] = useState({
+    name: "",
+    region: "",
+    scientificName: "",
+    info: "",
+    illustrationPhoto: "",
   });
 
-  const [formErrors, setFormErrors] = useState({});
+  const [formVisible, setFormVisible] = useState(false);
+  const [filledInputs, setFilledInputs] = useState(0);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFishFrom((prevData) => ({
+    setFishData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+
+    if (value.trim() !== "") {
+      setFilledInputs((prevCount) => prevCount + 1);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const errors = validateForm();
-    setFormErrors(errors);
-
-    if (!Object.keys(errors).length) {
-      onCarSubmit(fishFrom);
-      // Reset form
-      setFishFrom({
-        id: Math.random(),
-        color: "",
-        year: 0,
-        make: "",
-        engine: 0,
-        price: 0,
-        img: "",
+    if (filledInputs === 4) {
+      onFishSubmit(fishData);
+      setFishData({
+        name: "",
+        region: "",
+        scientificName: "",
+        info: "",
+        illustrationPhoto: "",
       });
+      setFilledInputs(0);
     } else {
-      console.log("Form is invalid");
+      console.log("Form is incomplete");
     }
   };
 
-  const validateForm = () => {
-    const errors = {};
-
-    if (fishFrom.color.trim() === "") {
-      errors.color = "Color is required!";
-    }
-
-    if (!fishFrom.year) {
-      errors.year = "Year is required!";
-    }
-
-    if (fishFrom.make.trim() === "") {
-      errors.make = "Make is required!";
-    }
-
-    if (!fishFrom.engine) {
-      errors.engine = "Engine is required!";
-    }
-
-    if (!fishFrom.price) {
-      errors.price = "Price is required!";
-    }
-
-    if (fishFrom.img.trim() === "") {
-      errors.img = "Image URL is required!";
-    }
-
-    return errors;
+  const toggleFormVisibility = () => {
+    setFormVisible(!formVisible);
   };
 
   return (
-    <FormItem onSubmit={handleSubmit}>
-      <LabelItem>
-        Region:
-        <InputItem
-          type="text"
-          name="color"
-          value={fishFrom.color}
-          onChange={handleChange}
-          className="create-car-form-input"
-        />
-      </LabelItem>
-      {formErrors.color && (
-        <span className="create-car-form-error">{formErrors.color}</span>
-      )}
-      <br />
-      <LabelItem>
-        Scientific Name:
-        <InputItem
-          type="number"
-          name="year"
-          value={fishFrom.year}
-          onChange={handleChange}
-          className="create-car-form-input"
-        />
-        {formErrors.year && (
-          <span className="create-car-form-error">{formErrors.year}</span>
-        )}
-      </LabelItem>
-      <br />
-      <LabelItem>
-        Info:
-        <InputItem
-          type="text"
-          name="make"
-          value={fishFrom.make}
-          onChange={handleChange}
-          className="create-car-form-input"
-        />
-        {formErrors.make && (
-          <span className="create-car-form-error">{formErrors.make}</span>
-        )}
-      </LabelItem>
-      <br />
-      <Button>Create Fish</Button>
-    </FormItem>
+    <>
+      <Button onClick={toggleFormVisibility}>Create Fish</Button>
+      <FormItem visible={formVisible} onSubmit={handleSubmit}>
+        <LabelItem>
+          Name:
+          <InputItem
+            type="text"
+            name="name"
+            value={fishData.name}
+            onChange={handleChange}
+          />
+        </LabelItem>
+        <LabelItem>
+          Region:
+          <InputItem
+            type="text"
+            name="region"
+            value={fishData.region}
+            onChange={handleChange}
+          />
+        </LabelItem>
+        <LabelItem>
+          Scientific Name:
+          <InputItem
+            type="text"
+            name="scientificName"
+            value={fishData.scientificName}
+            onChange={handleChange}
+          />
+        </LabelItem>
+        <LabelItem>
+          Info:
+          <InputItem
+            type="text"
+            name="info"
+            value={fishData.info}
+            onChange={handleChange}
+          />
+        </LabelItem>
+        <LabelItem>
+          Illustration Photo:
+          <InputItem
+            type="text"
+            name="illustrationPhoto"
+            value={fishData.illustrationPhoto}
+            onChange={handleChange}
+          />
+        </LabelItem>
+        <Button type="submit">Create Fish</Button>
+      </FormItem>
+    </>
   );
 };
 
