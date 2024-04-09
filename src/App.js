@@ -5,6 +5,7 @@ import Error from "./ui/Error";
 import FishesWrapper, {
   fishLoader,
 } from "./components/FishesWrapper/FishesWrapper";
+import TestComp from "./components/TestComp/TestComp";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
         path: "/fishes",
         element: <FishesWrapper />,
         loader: fishLoader,
+        errorElement: <Error />,
+      },
+      {
+        path: "/about",
+        element: <TestComp />,
         errorElement: <Error />,
       },
     ],
