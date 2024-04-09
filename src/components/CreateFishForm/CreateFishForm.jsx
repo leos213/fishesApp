@@ -114,7 +114,7 @@ const CreateFishForm = ({ onFishSubmit }) => {
             onChange={handleChange}
           />
         </LabelItem>
-        <LabelItem>
+        {/* <LabelItem>
           Illustration Photo:
           <InputItem
             type="text"
@@ -122,8 +122,8 @@ const CreateFishForm = ({ onFishSubmit }) => {
             value={fishData.illustrationPhoto}
             onChange={handleChange}
           />
-        </LabelItem>
-        <Button type="submit">Create Fish</Button>
+        </LabelItem> */}
+        <Button type="submit">Add Fish</Button>
       </FormItem>
     </>
   );
