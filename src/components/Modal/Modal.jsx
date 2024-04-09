@@ -19,6 +19,7 @@ const closeButtonStyle = {
   border: "none",
   background: "transparent",
   fontSize: "15px",
+  cursor: "pointer",
 };
 
 const Modal = ({ children, onClose }) => {
