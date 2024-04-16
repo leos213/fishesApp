@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import { createFish } from "../../services/fishesApi";
 
 const Button = styled.button`
   width: 100px;
@@ -27,8 +29,16 @@ const LabelItem = styled.label`
   margin-left: 30px;
 `;
 
-const CreateFishForm = ({ onFishSubmit }) => {
-  const [fishData, setFishData] = useState({
+const CreateFishForm = () => {
+  const navigate = useNavigate();
+  const { dispatchFish } = useOutletContext();
+
+  const colorInputRef = useRef(null);
+
+  useEffect(() => {
+    colorInputRef.current.focus();
+  }, []);
+  const [fishForm, setFishForm] = useState({
     name: "",
     region: "",
     scientificName: "",
@@ -42,7 +52,7 @@ const CreateFishForm = ({ onFishSubmit }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFishData((prevData) => ({
+    setFishForm((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -52,21 +62,33 @@ const CreateFishForm = ({ onFishSubmit }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatchFish({ type: "LOADING", payload: true });
 
     if (filledInputs === 4) {
-      onFishSubmit(fishData);
-      setFishData({
+      try {
+        const newFish = await createFish(fishForm);
+        dispatchFish({ type: "ADD_CAR", payload: newFish });
+        dispatchFish({ type: "LOADING", payload: false });
+
+        navigate("/cars");
+      } catch (error) {
+        console.error("Failed to create car", error);
+        dispatchFish({ type: "LOADING", payload: false });
+      }
+
+      setFishForm({
         name: "",
         region: "",
         scientificName: "",
         info: "",
         illustrationPhoto: "",
       });
+      dispatchFish({ type: "LOADING" });
       setFilledInputs(0);
     } else {
-      console.log("Form is incomplete");
+      dispatchFish({ type: "LOADING", payload: false });
     }
   };
 
@@ -83,7 +105,7 @@ const CreateFishForm = ({ onFishSubmit }) => {
           <InputItem
             type="text"
             name="name"
-            value={fishData.name}
+            value={fishForm.name}
             onChange={handleChange}
           />
         </LabelItem>
@@ -92,7 +114,7 @@ const CreateFishForm = ({ onFishSubmit }) => {
           <InputItem
             type="text"
             name="region"
-            value={fishData.region}
+            value={fishForm.region}
             onChange={handleChange}
           />
         </LabelItem>
@@ -101,7 +123,7 @@ const CreateFishForm = ({ onFishSubmit }) => {
           <InputItem
             type="text"
             name="scientificName"
-            value={fishData.scientificName}
+            value={fishForm.scientificName}
             onChange={handleChange}
           />
         </LabelItem>
@@ -110,19 +132,10 @@ const CreateFishForm = ({ onFishSubmit }) => {
           <InputItem
             type="text"
             name="info"
-            value={fishData.info}
+            value={fishForm.info}
             onChange={handleChange}
           />
         </LabelItem>
-        {/* <LabelItem>
-          Illustration Photo:
-          <InputItem
-            type="text"
-            name="illustrationPhoto"
-            value={fishData.illustrationPhoto}
-            onChange={handleChange}
-          />
-        </LabelItem> */}
         <Button type="submit">Add Fish</Button>
       </FormItem>
     </>

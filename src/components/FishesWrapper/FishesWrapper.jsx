@@ -1,43 +1,31 @@
-import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { useReducer } from "react";
+import { useLoaderData, useNavigate, Outlet } from "react-router-dom";
 import FishCard from "../FishCard/FishCard";
 import "./FishesWrapper.css";
-import Modal from "../Modal/Modal";
-import CreateFishForm from "../CreateFishForm/CreateFishForm";
 import { getFishs } from "../../services/fishesApi";
+import fishesReducer from "./fishesReducer";
 
 export async function fishLoader() {
   const fishes = await getFishs();
-  console.log(fishes);
+  // console.log(fishes);
   return fishes;
 }
 
 const FishesWrapper = () => {
+  const navigate = useNavigate();
   const fishes = useLoaderData();
-
-  const [createFish, setCreateFish] = useState(false);
-  // useState-ში რომ მივანიჭო fishes იქრაშება
-  const [fishList, setFishList] = useState([]);
-
-  const handleFishSubmit = (fish) => {
-    if (fish) {
-      setFishList((prevFish) => {
-        return [...prevFish, fish];
-      });
-      setCreateFish(false);
-    }
-  };
+  const [fishState, dispatchFish] = useReducer(fishesReducer, {
+    fishList: fishes,
+    loading: false,
+  });
 
   return (
     <div className="fishes-wrapper">
-      <button onClick={() => setCreateFish(true)}>Create Fish</button>
-      {createFish && (
-        <Modal onClose={() => setCreateFish(false)}>
-          <CreateFishForm onFishSubmit={handleFishSubmit} />
-        </Modal>
-      )}
+      {fishState.loading && <div>Loading...</div>}
+      <button onClick={() => navigate("/fishes/create")}>Create Fish</button>
+      <Outlet context={{ dispatchFish }} />
       <div className="fishes-container">
-        {fishList.map((fish) => {
+        {fishState.fishList.map((fish) => {
           return (
             <FishCard
               key={fish.name}
