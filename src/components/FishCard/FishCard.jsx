@@ -19,6 +19,11 @@ const FishCard = ({
   illustrationPhoto,
   info,
 }) => {
+  // Check if illustrationPhoto is defined before accessing its properties
+  if (!illustrationPhoto || !illustrationPhoto.src) {
+    return null; // or handle the case where illustrationPhoto or illustrationPhoto.src is undefined
+  }
+
   return (
     <GridContainer>
       <div>

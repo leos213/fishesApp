@@ -6,6 +6,8 @@ import FishesWrapper, {
   fishLoader,
 } from "./components/FishesWrapper/FishesWrapper";
 import TestComp from "./components/TestComp/TestComp";
+import CreateFishForm from "./components/CreateFishForm/CreateFishForm";
+import PrivateRoute from "./components/NavBar/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,18 @@ const router = createBrowserRouter([
         element: <FishesWrapper />,
         loader: fishLoader,
         errorElement: <Error />,
+        children: [
+          {
+            path: "create",
+            // loader: authGuardLoader,
+            // element: <CreateCarForm />,
+            element: (
+              <PrivateRoute>
+                <CreateFishForm />
+              </PrivateRoute>
+            ),
+          },
+        ],
       },
       {
         path: "/about",
