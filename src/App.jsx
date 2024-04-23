@@ -8,6 +8,7 @@ import FishesWrapper, {
 import TestComp from "./components/TestComp/TestComp";
 import CreateFishForm from "./components/CreateFishForm/CreateFishForm";
 import PrivateRoute from "./components/NavBar/PrivateRoute";
+import AuthContextProvider from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
+  );
 }
 
 export default App;
